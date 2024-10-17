@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "sistema/estoque/css/estoque.css" %}">
+    <title>Meu Estoque</title>
+</head>
+<body>
+    <body>
+        <table border="1">
+            <caption>Estoque</caption>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Qtd</th>
+                    <th>Data de entrada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cabo</td>
+                    <td>2</td>
+                    <td>16/10/1999</td>
+    
+                </tr>
+                <tr>
+                    <td>PC</td>
+                    <td>4</td>
+                    <td>07/12/2004</td>
+                </tr>
+                <tr>
+                    <td>Fulano</td>
+                    <td>5</td>
+                    <td>31/10/2004</td>
+                </tr>
+            </tbody>
+        </table>
+
+    <a href="{% url 'add_estoque' %}">Adicionar produto</a>
+    <a href="{% url 'remov_estoque' %}">Remover produto</a>
+    <a href="{% url 'mod_estoque' %}">Modificar produtos</a>
+
+
+<script src="{% static "sistema/estoque/js/estoque.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "sistema/estoque/css/estoque.css" %}">
+    <title>Adicionar produto</title>
+</head>
+<body>
+    <div>
+        <h1>Adicione o produto!</h1>
+    </div>
+    <div>
+        <form action="POST">
+            <div>
+                <label for="nome">Nome do Produto: </label>
+                <input type="text" name="nome" id="nome" placeholder = 'Ensira aqui!'required>
+            </div>
+            <div>
+                <label for="valor">Valor do produto: </label>
+                <input type="number" name="nome" id="nome" min = '0' max = '9999' any = '.01' placeholder = 'Ensira aqui!' size = "19" required>
+            </div>
+        </form>
+    </div>
+<script src="{% static "sistema/estoque/js/estoque.js" %}"></script>
+</body>
+</html>
