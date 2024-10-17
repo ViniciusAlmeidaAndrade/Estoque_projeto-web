@@ -1,15 +1,17 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "sistema/estoque/css/estoque.css" %}">
-    <title>Remover produto</title>
+    <title>Deletar Produto</title>
 </head>
 <body>
-    <h1>Aqui você vai remover produto</h1>
-
-<script src="{% static "sistema/estoque/js/estoque.js" %}"></script>
+    <h1>Deletar Produto: {{ produto.nome_prod }}</h1>
+    <p>Tem certeza de que deseja apagar esse produto?</p>
+    <form method = "POST">
+        {% csrf_token %}
+        <button type="submit">Sim, apagar</button>
+    </form>
+    <a href="{% url 'estoque' %}"><button id="del">Desistir</button></a>
 </body>
 </html>

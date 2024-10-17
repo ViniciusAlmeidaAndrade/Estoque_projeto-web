@@ -31,13 +31,14 @@
                 <input type="date" name="data_entrada" id="data_entrada">
             </div>
             <div>
-                <button type="submit">Adicionar</button> <a href="{% url 'estoque' %}">Ver estoque</a>
+                <button type="submit">Adicionar</button>
             </div>
         </form>
+        <a href="{% url 'estoque' %}"><button id="del">Desistir</button></a>
     </div>
 <script>
     {% if nao_add %}
-    alert('O produto não foi adicionado!');
+    alert('Esse produto já existe no estoque!!');
     {% elif add  %}
     alert('O produto foi adicionado!');
     {% endif %}

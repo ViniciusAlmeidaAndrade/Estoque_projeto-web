@@ -9,33 +9,35 @@
 </head>
 <body>
     <table border="1">
-        <caption>Estoque</caption>
+        <caption>Produtos em estoque: {{ verprod|length }}</caption>
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Nome</th>
-                <th>Qtnd</th>
+                <th>Qntd</th>
+                <th>Valor</th>
                 <th>Data de entrada</th>
+                <th>Funções</th>
             </tr>
         </thead>
         <tbody>
             {% for produto in verprod %}
             <tr>
+                <td>{{ produto.id_prod }}</td>
                 <td>{{ produto.nome_prod }}</td>
                 <td>{{ produto.qtnd_prod }}</td>
+                <td>{{ produto.vlr_prod }}</td>
                 <td>{{ produto.entrada_prod }}</td>
+                <td>
+                    <a href="{% url 'editar_produto' produto.id_prod %}"><button id="up">Editar</button></a>    
+                    <a href="{% url 'deletar_produto' produto.id_prod %}"><button id="del">Apagar</button></a>
+                </td>
             </tr>
-
             {% endfor %}
         </tbody>
     </table>
-    <div>
-        <p>Produtos em estoque: {{ verprod|length }}</p>
-    </div>
-    
 
-    <a href="{% url 'add_estoque' %}">Adicionar produto</a>
-    <a href="{% url 'remov_estoque' %}">Remover produto</a>
-    <a href="{% url 'mod_estoque' %}">Modificar produtos</a>
+    <a href="{% url 'add_estoque' %}"><button id="up">Adicionar produto</button></a>
 
     <script src="{% static 'sistema/estoque/js/estoque.js' %}"></script>
 </body>

@@ -4,12 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "sistema/estoque/css/estoque.css" %}">
-    <title>Modificar produto</title>
+    <title>Editar Produto</title>
 </head>
 <body>
-    <h1>Aqui você vai modificar produto</h1>
-
-<script src="{% static "sistema/estoque/js/estoque.js" %}"></script>
+    <h1>Editar Produto: {{ produto.nome_prod }}</h1>
+    <form method = "POST">
+        {% csrf_token %}
+        <div>
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" name="nome" id="nome" value="{{ produto.nome_prod }}" required>
+        </div>
+        <div>
+            <label for="valor">Valor do Produto:</label>
+            <input type="number" name="valor" id="valor" min="0" step="0.01" value="{{ produto.vlr_prod }}" required>
+        </div>
+        <div>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" name="quantidade" id="quantidade" min="0" value="{{ produto.qtnd_prod }}" required>
+        </div>
+        <div>
+            <label for="data_entrada">Data de Entrada:</label>
+            <input type="date" name="data_entrada" id="data_entrada" value="{{ produto.entrada_prod|date:'Y-m-d' }}">
+        </div>
+        <div>
+            <button type="submit">Atualizar Produto</button>
+        </div>
+    </form>
+    <a href="{% url 'estoque' %}"><button id="del">Desistir</button></a>
 </body>
 </html>
