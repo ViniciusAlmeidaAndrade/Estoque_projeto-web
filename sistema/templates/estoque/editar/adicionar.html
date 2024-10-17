@@ -12,17 +12,37 @@
         <h1>Adicione o produto!</h1>
     </div>
     <div>
-        <form action="POST">
+        <form method = 'POST'>
+            {% csrf_token %}
             <div>
-                <label for="nome">Nome do Produto: </label>
+                <label for="nome">Nome do produto: </label>
                 <input type="text" name="nome" id="nome" placeholder = 'Ensira aqui!'required>
             </div>
             <div>
                 <label for="valor">Valor do produto: </label>
-                <input type="number" name="nome" id="nome" min = '0' max = '9999' any = '.01' placeholder = 'Ensira aqui!' size = "19" required>
+                <input type="number" name="valor" id="valor" min="0" max="9999.99" step="0.01" placeholder="Insira aqui!" required>
+            </div>            
+            <div>
+                <label for="qntd">Quantidade: </label>
+                <input type="number" name="qntd" id="qntd" placeholder = 'Ensira aqui!' size = "18" required>
+            </div>
+            <div>
+                <label for="data_entrada">Data de entrada: </label>
+                <input type="date" name="data_entrada" id="data_entrada">
+            </div>
+            <div>
+                <button type="submit">Adicionar</button> <a href="{% url 'estoque' %}">Ver estoque</a>
             </div>
         </form>
     </div>
+<script>
+    {% if nao_add %}
+    alert('O produto não foi adicionado!');
+    {% elif add  %}
+    alert('O produto foi adicionado!');
+    {% endif %}
+</script>
+
 <script src="{% static "sistema/estoque/js/estoque.js" %}"></script>
 </body>
 </html>
