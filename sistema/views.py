@@ -34,11 +34,11 @@ def adicionar_produto(request):
             return render(request, 'estoque/editar/adicionar.html', {'add': True})
 
 
-def remover_estoque(request):
+def remover_estoque(request, id_prod):
     if request.method == 'GET':
         return render(request, 'estoque/editar/remover.html')
 
 
-def modificar_estoque(request):
+def modificar_estoque(request, id_prod):
     if request.method == 'GET':
         return render(request, 'estoque/editar/modificar.html')    
