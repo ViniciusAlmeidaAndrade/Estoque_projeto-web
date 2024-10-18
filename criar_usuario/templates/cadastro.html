@@ -1,0 +1,53 @@
+{% load static %}
+{% load permission_tags %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <h1>Cadrasto de Usuarios</h1><br>
+            </div>
+            <div>
+                <label for = "p-nome">Primeiro Nome:</label>
+                <input type = "text" name = 'first_name' id = 'p-nome' placeholder = "Primeiro Nome">
+            </div>
+            <div>
+                <label for = "u-nome">Ultimo Nome:</label>
+                <input type = "text" name = 'last_name' id = 'u-nome' placeholder = "Ultimo Nome">
+            </div>
+            <div>
+                <label for="username">Usuario:</label>
+                <input type="text" name = 'username' id = 'username' placeholder="Usuario">
+            </div>
+            <div>
+                <label for = "email">Email:</label>
+                <input type = "text" name = 'email' id = 'email' placeholder="exemplo@gmail.com">
+            </div>
+            <div>
+                <label for="password">Senha:</label>
+                <input type="password" name = 'password' id = 'password' placeholder="Insira a senha">
+            </div>
+            <div>
+                <button type="submit">Criar</button>
+            </div>
+             
+        </form>
+    </div>
+
+
+    <script>
+        {% if duplicado %}
+        alert('Já existe um funcionario com o mesmo usuario!');
+        {% elif add %}
+        alert('Usuario criado!')
+        {% endif %}
+    </script>
+</body>
+</html>

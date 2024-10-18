@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'sistema',
+    'criar_usuario',
+    'rolepermissions',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +130,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'template/static')]
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ROLEPERMISSIONS_MODULE = 'projeto_web.roles'

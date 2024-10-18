@@ -6,4 +6,5 @@ urlpatterns = [
     path('estoque/editar/<int:id_prod>/', views.modificar_produto, name='editar_produto'), #Esse aqui é o caminho para o gerente modificar o produto
     path('estoque/deletar/<int:id_prod>/', views.deletar_produto, name='deletar_produto'), #Esse aqui é o caminho para o gerente apagar o produto
     
+    path('criar_usuario/', include('criar_usuario.urls')),
 ]

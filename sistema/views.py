@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from .models import Produtos
 from django.contrib.auth.decorators import login_required
-
+from rolepermissions.decorators import has_role_decorator
 # Create your views here.
 
 @login_required
@@ -13,7 +13,7 @@ def estoque(request):
         verprod = Produtos.objects.all()
         return render(request, 'estoque/estoque.html', {'verprod': verprod})
     
-@login_required
+@has_role_decorator('gerente')
 def adicionar_produto(request):
 
     if request.method == 'GET':
@@ -37,7 +37,7 @@ def adicionar_produto(request):
 
             return redirect('estoque')
         
-@login_required
+@has_role_decorator('gerente')
 def deletar_produto(request, id_prod):
     #Estou buscando o produto pelo id, se nao existir, da erro 404
     produto = get_object_or_404(Produtos, id_prod=id_prod)
@@ -49,7 +49,7 @@ def deletar_produto(request, id_prod):
 
     return render(request, 'estoque/editar/remover.html', {'produto': produto})
 
-@login_required
+@has_role_decorator('gerente')
 def modificar_produto(request, id_prod):
     #Isso aqui vai ver se o produto existe, se nao existir, retorna uma página 404
     produto = get_object_or_404(Produtos, id_prod = id_prod)

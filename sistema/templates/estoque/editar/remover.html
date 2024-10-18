@@ -1,4 +1,5 @@
 {% load static %}
+{% load permission_tags %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'sistema/estoque/css/estoque.css' %}">
     <title>Deletar Produto</title>
 </head>
+{% if user|has_role:'gerente' %}
 <body>
     <h1>Deletar Produto: {{ produto.nome_prod }}</h1>
     <p>Tem certeza de que deseja apagar esse produto?</p>
@@ -20,3 +22,4 @@
     <script src="{% static 'sistema/estoque/js/estoque.js' %}"></script>
 </body>
 </html>
+{% endif %}

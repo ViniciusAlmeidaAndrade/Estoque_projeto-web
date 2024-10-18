@@ -1,4 +1,5 @@
 {% load static %}
+{% load permission_tags %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'sistema/estoque/css/estoque.css' %}">
     <title>Meu Estoque</title>
 </head>
+{% if user|has_role:'gerente' %}
 <body>
     <table border="1">
         <caption>Produtos em estoque: {{ verprod|length }}</caption>
@@ -45,3 +47,31 @@
     </script>
     <script src="{% static 'sistema/estoque/js/estoque.js' %}"></script>
 </body>
+{% elif user|has_role:'tecnico' %}
+<body>
+    <table border="1">
+        <caption>Produtos em estoque: {{ verprod|length }}</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Qntd</th>
+                <th>Valor</th>
+                <th>Data de entrada</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in verprod %}
+            <tr>
+                <td>{{ produto.id_prod }}</td>
+                <td>{{ produto.nome_prod }}</td>
+                <td>{{ produto.qtnd_prod }}</td>
+                <td>{{ produto.vlr_prod }}</td>
+                <td>{{ produto.entrada_prod }}</td>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="{% static 'sistema/estoque/js/estoque.js' %}"></script>
+</body>
+{% endif %}
