@@ -38,6 +38,7 @@ def remover_estoque(request):
     if request.method == 'GET':
         return render(request, 'estoque/editar/remover.html')
 
+
 def modificar_estoque(request):
     if request.method == 'GET':
         return render(request, 'estoque/editar/modificar.html')    
