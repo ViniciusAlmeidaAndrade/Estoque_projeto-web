@@ -20,25 +20,50 @@ def adicionar_produto(request):
         #Aqui eu estou renderizando meu html
         return render(request, 'estoque/editar/adicionar.html')
     else:
-        produto = Produtos(
+        #Primeiro eu estou faazendo uma verificação para assegurar que não tenha um produto com o mesmo nome, caso tenha, aparece um pop-up na tela
+        nome_prod = request.POST.get('nome')
+        verificar = Produtos.objects.filter(nome_prod = nome_prod).first()
+
+        if verificar:
+            return render(request, 'estoque/editar/adicionar.html', {'nao_add': True})
+        else:
+            produtos = Produtos(
             nome_prod=request.POST.get('nome'),
             vlr_prod=request.POST.get('valor'),
             qtnd_prod=request.POST.get('qntd'),
             entrada_prod=request.POST.get('data_entrada')
-        )
-        produto.save()
+            )
+            produtos.save()
+
+            return redirect('estoque')
         
-        if produto is None:
-            return render(request, 'estoque/editar/adicionar.html', {'nao_add': True})
-        else:
-            return render(request, 'estoque/editar/adicionar.html', {'add': True})
+@login_required
+def deletar_produto(request, id_prod):
+    #Estou buscando o produto pelo id, se nao existir, da erro 404
+    produto = get_object_or_404(Produtos, id_prod=id_prod)
 
+    if request.method == 'POST':
+        #Função para deletar o produto, produto esse que selecionei pelo id
+        produto.delete()
+        return redirect('estoque')  # Redireciona para o estoque
 
-def remover_estoque(request, id_prod):
-    if request.method == 'GET':
-        return render(request, 'estoque/editar/remover.html')
+    return render(request, 'estoque/editar/remover.html', {'produto': produto})
 
+@login_required
+def modificar_produto(request, id_prod):
+    #Isso aqui vai ver se o produto existe, se nao existir, retorna uma página 404
+    produto = get_object_or_404(Produtos, id_prod = id_prod)
 
-def modificar_estoque(request, id_prod):
-    if request.method == 'GET':
-        return render(request, 'estoque/editar/modificar.html')    
+    if request.method == 'POST':
+            # Recebe os dados do formulários
+            produto.nome_prod = request.POST.get('nome')
+            produto.vlr_prod = request.POST.get('valor')
+            produto.qtnd_prod = request.POST.get('quantidade')
+            produto.entrada_prod = request.POST.get('data_entrada')
+
+            verprod = Produtos.objects.all()
+            produto.save()
+
+            return render(request, 'estoque/estoque.html', {'add': True, 'verprod': verprod})
+              
+    return render(request, 'estoque/editar/modificar.html', {'produto': produto})
