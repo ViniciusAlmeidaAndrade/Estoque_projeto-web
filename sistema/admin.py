@@ -5,5 +5,5 @@ from .models import Produtos
 
 @admin.register(Produtos)
 class ProdutosAdmin(admin.ModelAdmin):
-    list_display = ('id_prod', 'nome_prod', 'vlr_prod', 'qtnd_prod', 'entrada_prod')  # Adicione os campos que deseja exibir
+    list_display = ('id_prod', 'nome_prod', 'vlr_prod', 'qtnd_prod', 'entrada_prod') #Isso é para aparece a tabela no /admin, caso queira alterar por lá.
 

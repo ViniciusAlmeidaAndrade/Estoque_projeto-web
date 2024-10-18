@@ -28,16 +28,17 @@
             </div>
             <div>
                 <label for="data_entrada">Data de entrada: </label>
-                <input type="date" name="data_entrada" id="data_entrada">
+                <input type="date" name="data_entrada" id="data_entrada" min = '2024-01-01' required>
             </div>
             <div>
-                <button type="submit">Adicionar</button> <a href="{% url 'estoque' %}">Ver estoque</a>
+                <button>Adicionar</button>
             </div>
         </form>
+        <a href="{% url 'estoque' %}"><button id="del">Desistir</button></a>
     </div>
 <script>
     {% if nao_add %}
-    alert('O produto não foi adicionado!');
+    alert('Já existe um produto com o mesmo nome!');
     {% elif add  %}
     alert('O produto foi adicionado!');
     {% endif %}
