@@ -10,11 +10,15 @@
 </head>
 <body>
     <div>
-        <h1>Adicione o produto!</h1>
+        <a href="{% url "estoque" %}" >Estoque</a>
+        <a href="{% url "criar_usuario" %}" >Criar Usuario</a>
     </div>
     <div>
         <form method = 'POST'>
             {% csrf_token %}
+            <div>
+                <h1>Adicione o produto!</h1>
+            </div>
             <div>
                 <label for="nome">Nome do produto: </label>
                 <input type="text" name="nome" id="nome" placeholder = 'Ensira aqui!'required>

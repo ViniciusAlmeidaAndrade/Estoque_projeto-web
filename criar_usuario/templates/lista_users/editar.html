@@ -1,0 +1,40 @@
+{% load static %}
+{% load permission_tags %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'sistema/criar_usuario/css/criar_usuario.css' %}">
+    <title>Editar senha</title>
+</head>
+<body>
+    <div>
+        <a href="{% url "estoque" %}" >Estoque</a>
+        <a href="{% url "criar_usuario" %}" >Criar Usuario</a>
+        <a href= "{% url "lista" %}">Lista de usuarios</button></a>
+    </div>
+    
+    <form method = "POST">
+        {% csrf_token %}
+        <div>
+            <h1>Editar Senha: {{ user.username }}</h1>
+        </div>
+        <div>
+            <label for="senha">Insira a nova senha:</label>
+            <input type="password" name="senha" id="senha" required>
+        </div>
+        <div>
+            <button type="submit">Atualizar</button>
+        </div>
+    </form>
+
+    <script>
+        {% if nao_add %}
+        alert('Senha invalída!');
+        {% elif add%}
+        alert('Senha alterada com sucesso!')
+        {% endif %}
+    </script>
+    <script src="{% static 'sistema/criar_usuario/js/criar_usuario.js' %}"></script>
+</body>        

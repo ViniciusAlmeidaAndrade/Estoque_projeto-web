@@ -5,19 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'sistema/estoque/css/estoque.css' %}">
-    <title>Deletar Produto</title>
+    <link rel="stylesheet" href="{% static 'sistema/criar_usuario/css/criar_usuario.css' %}">
+    <title>Deletar Usuario</title>
 </head>
 <body>
     <div>
         <a href="{% url "estoque" %}" >Estoque</a>
         <a href="{% url "criar_usuario" %}" >Criar Usuario</a>
+        <a href= "{% url "lista" %}">Lista de usuarios</button></a>
     </div>
     <div>
-        <h1>Deletar Produto: {{ produto.nome_prod }}</h1>
+        <h1>Deletar Usuario: {{ usuario.username }}</h1>
     </div>
     <div>
-        <p>Tem certeza de que deseja apagar esse produto?</p>
+        <p>Tem certeza de que deseja apagar esse usuario?</p>
     </div>
     <div>
         <form method = "POST">
@@ -31,6 +32,6 @@
 
 
 
-    <script src="{% static 'sistema/estoque/js/estoque.js' %}"></script>
+    <script src="{% static 'sistema/criar_usuario/js/criar_usuario.js' %}"></script>
 </body>
 </html>

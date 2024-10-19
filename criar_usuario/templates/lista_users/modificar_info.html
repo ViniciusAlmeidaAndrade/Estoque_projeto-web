@@ -1,0 +1,54 @@
+{% load static %}
+{% load permission_tags %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'sistema/criar_usuario/css/criar_usuario.css' %}">
+    <title>Editar informações</title>
+</head>
+<body>
+    <div>
+        <a href="{% url "estoque" %}" >Estoque</a>
+        <a href="{% url "criar_usuario" %}" >Criar Usuario</a>
+        <a href="{% url "lista" %}">Lista de usuarios</a>
+    </div>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            <h1>Editar Usuario: {{ usuario.username }}</h1>
+        </div>
+        <div>
+            <label for="first_name">Primeiro nome:</label>
+            <input type="text" name="first_name" id="first_name" value="{{ usuario.first_name }}" required>
+        </div>
+        <div>
+            <label for="last_name">Ultimo nome:</label>
+            <input type="text" name="last_name" id="last_name" value="{{ usuario.last_name }}" required>
+        </div>
+        <div>
+            <label for="username">Usuario:</label>
+            <input type="text" name="username" id="username" value="{{ usuario.username }}" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ usuario.email }}" required>
+        </div>
+        <div>
+            <button type="submit">Atualizar {{ usuario.username }}</button>
+        </div>
+    </form>
+    <a href="{% url 'estoque' %}"><button id="del">Desistir</button></a>
+
+    <script src="{% static 'sistema/criar_usuario/js/criar_usuario.js' %}"></script>
+    <script>
+        {% if nao_add %}
+        alert('Já existe um produto com o mesmo nome!!');
+        {% elif add %}
+        alert('Usuario alterado com sucesso!')
+        {% endif %}
+    </script>
+</body>
+</html>

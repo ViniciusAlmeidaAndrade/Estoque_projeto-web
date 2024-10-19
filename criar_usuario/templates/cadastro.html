@@ -5,43 +5,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'sistema/criar_usuario/css/criar_usuario.css' %}">
+    <title>Cadastrar Tecnico</title>
 </head>
 <body>
+    <div>
+        <a href="{% url "estoque" %}" >Estoque</a>
+        <a href= "{% url "lista" %}">Lista de usuarios</button></a>
+
+    </div>
+    
     <div class="form">
         <form method="POST">
             {% csrf_token %}
             <div>
-                <h1>Cadrasto de Usuarios</h1><br>
+                <h1>Cadrasto de Usuarios</h1>
             </div>
             <div>
                 <label for = "p-nome">Primeiro Nome:</label>
-                <input type = "text" name = 'first_name' id = 'p-nome' placeholder = "Primeiro Nome">
+                <input type = "text" name = 'first_name' id = 'p-nome' placeholder = "Primeiro Nome" required>
             </div>
             <div>
                 <label for = "u-nome">Ultimo Nome:</label>
-                <input type = "text" name = 'last_name' id = 'u-nome' placeholder = "Ultimo Nome">
+                <input type = "text" name = 'last_name' id = 'u-nome' placeholder = "Ultimo Nome" required>
             </div>
             <div>
                 <label for="username">Usuario:</label>
-                <input type="text" name = 'username' id = 'username' placeholder="Usuario">
+                <input type="text" name = 'username' id = 'username' placeholder="Usuario" required>
             </div>
             <div>
                 <label for = "email">Email:</label>
-                <input type = "text" name = 'email' id = 'email' placeholder="exemplo@gmail.com">
+                <input type = "text" name = 'email' id = 'email' placeholder="exemplo@gmail.com" required>
             </div>
             <div>
                 <label for="password">Senha:</label>
-                <input type="password" name = 'password' id = 'password' placeholder="Insira a senha">
+                <input type="password" name = 'password' id = 'password' placeholder="Insira a senha" required>
             </div>
             <div>
-                <button type="submit">Criar</button>
+                <button type="submit">Criar</buttonr>
             </div>
              
         </form>
     </div>
-
-
+    
     <script>
         {% if duplicado %}
         alert('Já existe um funcionario com o mesmo usuario!');
