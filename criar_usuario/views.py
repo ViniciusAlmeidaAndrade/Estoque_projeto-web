@@ -2,9 +2,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from rolepermissions.roles import assign_role
+from django.contrib.auth.decorators import login_required
+from rolepermissions.decorators import has_role_decorator
 
 # Create your views here.
 
+@has_role_decorator('gerente')
 def criar_usuario(request):
     if request.method == 'GET':
         return render(request, 'cadastro.html')
@@ -25,10 +28,12 @@ def criar_usuario(request):
             assign_role(user, 'tecnico')
             return render(request, 'cadastro.html', {'add': True})
 
+@has_role_decorator('gerente')
 def lista_user(request):
     ver_user = User.objects.all()
     return render(request, 'lista_users/lista.html', {'ver_user': ver_user})
     
+@has_role_decorator('gerente')    
 def mudar_senha(request, id):
     #Segurança para verificar se o usuario existe, se não, ele retorna um erro 404
     user = get_object_or_404(User, id=id)

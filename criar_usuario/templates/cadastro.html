@@ -11,7 +11,9 @@
 <body>
     <div>
         <a href="{% url "estoque" %}" >Estoque</a>
+        <a href="{% url "criar_usuario" %}" >Criar Usuario</a>
         <a href= "{% url "lista" %}">Lista de usuarios</button></a>
+        <a href="{% url 'enviar_solicitação' %}">Solicitação</a>
 
     </div>
     
@@ -35,7 +37,7 @@
             </div>
             <div>
                 <label for = "email">Email:</label>
-                <input type = "text" name = 'email' id = 'email' placeholder="exemplo@gmail.com" required>
+                <input type = "email" name = 'email' id = 'email' placeholder="exemplo@gmail.com" required>
             </div>
             <div>
                 <label for="password">Senha:</label>

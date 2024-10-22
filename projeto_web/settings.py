@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f7eyuz%h+_i+gt-k!d!p+$b4a6@_=zgm^+n9wfjl57owh&(9j$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'sistema',
     'criar_usuario',
     'rolepermissions',
+    'solicitacao',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'template/static')]
 
 # Default primary key field type
@@ -132,3 +135,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'template/static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ROLEPERMISSIONS_MODULE = 'projeto_web.roles'
+
+#Email
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'tecnicoabreuweb@gmail.com'
+EMAIL_HOST_PASSWORD = 'dtfe ghhv ynhb ucib '

@@ -1,0 +1,77 @@
+{% load static %}
+{% load permission_tags %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação</title>
+</head>
+{% if user|has_role:'gerente' %}
+<body>
+    <div>
+        <a href="{% url "estoque" %}" >Estoque</a>
+        <a href="{% url "criar_usuario" %}" >Criar Usuario</a>
+    </div>
+    <div>
+        <h1>Faça uma solicitação</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label for = "assunto">Email</label>
+                <input type = "email" id="email" name = "email" placeholder="Insira o email">
+            </div>
+            <div>
+                <label for="assunto">Assunto</label>
+                <input type="text" id = "assunto" name = "assunto" placeholder = "Insira o assunto">
+            </div>
+            <div>
+                <label for = "mensagem">Mensagem</label>
+                <textarea id = "mensagem" name = "mensagem" placeholder = "Insora sua mensagem"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script>
+        {% if feito %}
+        alert('O email foi enviado!')
+        {% elif erro %}
+        alert('É necessario preencher todos os campos!')
+        {% endif %}
+    </script>
+</body>
+{% else %}
+<body>
+    <div>
+        <a href="{% url "estoque" %}" >Estoque</a>
+        <a href="{% url 'enviar_solicitação' %}">Solicitação</a>
+    </div>
+    <div>
+        <h1>Faça uma solicitação</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label for = "assunto">Email</label>
+                <input type = "email" id="email" name = "email" placeholder="Insira o email" required>
+            </div>
+            <div>
+                <label for="assunto">Assunto</label>
+                <input type="text" id = "assunto" name = "assunto" placeholder = "Insira o assunto" required>
+            </div>
+            <div>
+                <label for = "mensagem">Mensagem</label>
+                <textarea id = "mensagem" name = "mensagem" placeholder = "Insora sua mensagem"></textarea required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script>
+        {% if feito %}
+        alert('O email foi enviado!')
+        {% elif erro %}
+        alert('É necessario preencher todos os campos!')
+        {% endif %}
+    </script>
+</body>
+{% endif %} 
+</html>
