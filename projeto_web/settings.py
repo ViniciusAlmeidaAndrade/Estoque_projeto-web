@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'criar_usuario',
     'rolepermissions',
     'solicitacao',
+    'produtos',
 ]
 
 MIDDLEWARE = [

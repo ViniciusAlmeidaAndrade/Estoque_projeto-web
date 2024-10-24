@@ -9,5 +9,6 @@ urlpatterns = [
     
     path('criar_usuario/', include('criar_usuario.urls'), name = 'criar_usuario'),
     path('solicitação/', include('solicitacao.urls'), name = 'enviar_solicitação'),
+    path('visita_tecnica/', include('produtos.urls'), name = 'visita_tecnica'),
 
 ]

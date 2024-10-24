@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>visitas</title>
+    <link rel="stylesheet" href="/static/produtos/css/css_cadastro.css">
+</head>
+<body>
+    <h1>Bem vindo</h1>
+    <form action="{% url "relatorio_vist" %}" method="POST">{% csrf_token %}
+        <fieldset>
+
+
+            <legend><h3>Relatório de visitas</h3></legend>
+            <label for="">Técnico:</label>
+            <input type="text" id="nom_tecnicos" name="nom_tecnicos" placeholder="Nome do tecnico"required></input><br>
+            
+            
+            <label for="">Cliente:</label>
+            <input type="text" id="nom_clientes" name="nom_clientes" placeholder="Nome do cliente" required></input><br>
+            
+            <label for="">Endereço:</label>
+            <input type="text" id="enderecos" name="enderecos" required></input><br>
+            
+            <label for="">Data</label>
+            <input type="date" id="datas" name="datas" required></input><br>
+            
+            <label for="">Produtos utilizados:</label><br>
+            <textarea name="prod_usados" id="prod_usados" rows="0" cols="33"required></textarea><br>
+
+            <label for="">Observações:</label><br>
+            <textarea name="observacoes" id"observacoes" rows="3" cols"33"></textarea><br>
+        
+            <button type="submit"> Enviar</button>
+        
+        </fieldset>
+    </form>
+</body>
+</html>
