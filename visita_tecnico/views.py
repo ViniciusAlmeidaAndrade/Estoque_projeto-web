@@ -16,7 +16,7 @@ def relatorio_vist(request):
         enderecos = request.POST.get("enderecos")
         datas = request.POST.get("datas")
         prod_usados = request.POST.get("prod_usados")
-        observacoes = request.POST.get("observacoes")
+        observacoes = request.POST.get("observacoes", "")
         try:
             relatorio = Relatorio_vist(
                 nom_tecnicos = nom_tecnicos,

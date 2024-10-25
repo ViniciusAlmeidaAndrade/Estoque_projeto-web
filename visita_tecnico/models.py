@@ -9,4 +9,4 @@ class Relatorio_vist(models.Model):
     observacoes =  models.CharField(max_length=255)
     
     def _str_(self) -> str:
-        return self.datas
+        return self.nome

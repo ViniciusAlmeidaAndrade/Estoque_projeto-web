@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+#Essa aqui é a tabela no banco de dados responsavel por armazernar os dados do estoque
 class Produtos(models.Model):
     id_prod = models.AutoField(primary_key= True)
     nome_prod = models.CharField(max_length = 150, null = False, unique = True)

@@ -6,10 +6,12 @@ from sistema import urls
 
 # Create your views here.
 
-def tela_login(request):
+def tela_login(request): #Views responsavel por autenticar o usuario
+    #Renderizo o html pelo metodo get
     if request.method == 'GET':
         return render(request, 'login.html')
     else:
+        #Puxo o username e password do form, e verifico se é valido, se for, eu prossigo para a tela inicial, se não for, aparece um pop-up
         username = request.POST.get('username')
         password = request.POST.get('password')
 

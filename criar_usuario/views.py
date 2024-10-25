@@ -8,10 +8,12 @@ from rolepermissions.decorators import has_role_decorator
 # Create your views here.
 
 @has_role_decorator('gerente')
-def criar_usuario(request):
+def criar_usuario(request): #Views responsavel por literalmente criar o usuario
+    #Primeiro eu renderizo a página pelo metódo GET
     if request.method == 'GET':
         return render(request, 'cadastro.html')
     else:
+        #Primeiro eu codei a verificação, isso para ver se existe um usuario com o mesmo nome. 'Filter' = faz uma busca detalhada no banco de dados. 'first()' = busca o objeto.
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         username = request.POST.get('username')
@@ -19,55 +21,59 @@ def criar_usuario(request):
         password = request.POST.get('password')
         
         user = User.objects.filter(username = username).first()
-
+        #Aqui eu estou verificando se a variavel 'user' é verdadeira, se for, ela irá retornar um pop-up configurado no HTML, e após isso recarregar a página.
         if user:
             return render(request, 'cadastro.html', {'duplicado': True})
-        else:                         
+        else:
+            #Em resumo, eu estou salvando o usuario no banco de dados e passando o cargo de tecnico para ele, após salvar, ele irá redirecionar para a tela de cadastro.                         
             user = User.objects.create_user(first_name = first_name, last_name = last_name, username = username, email = email, password = password)
             user.save()
             assign_role(user, 'tecnico')
             return render(request, 'cadastro.html', {'add': True})
 
 @has_role_decorator('gerente')
-def lista_user(request):
+def lista_user(request):#Views responsavel por listar todos os usuarios presentes no sistema
+    #Isso assegura que o estoque seja atualizado toda vez que entrar na pagina, isso pela por conta da variavel 'ver_user'
     ver_user = User.objects.all()
     return render(request, 'lista_users/lista.html', {'ver_user': ver_user})
     
 @has_role_decorator('gerente')    
-def mudar_senha(request, id):
-    #Segurança para verificar se o usuario existe, se não, ele retorna um erro 404
+def mudar_senha(request, id): #Views responsavel por alterar a senha do usuario
+    #Estou puxando o objeto do banco de dados, se esse objeto por algum motivo não existir, vai retornar um erro 404. Eu estou puxando o produto pelo id, pois o id sempre será unico
     user = get_object_or_404(User, id=id)
     
     if request.method == 'GET':
         return render(request, 'lista_users/editar.html', {'user': user})
     else:
-        #Recebe a nova senha
+        #Voce ira receber a nova senha, após isso, ira salver o usuario
         nova_senha = request.POST.get('senha')
         if nova_senha:
             user.set_password(nova_senha)
             user.save()
             return render(request, 'lista_users/editar.html', {'user': user , 'add': True})
         else:
-            #Mensagem de erro(vai ser adicionada ainda)
+            #Pop-up de erro
             return render(request, 'lista_users/editar.html', {'user': user , 'nao_add': True})
-        
-def deletar_usuario(request, id):
-    #Estou buscando o produto pelo id, se nao existir, da erro 404
+
+@has_role_decorator('gerente')            
+def deletar_usuario(request, id): #Views responsavel por deletar o usuario
+   #Estou puxando o objeto do banco de dados, se esse objeto por algum motivo não existir, vai retornar um erro 404. Eu estou puxando o produto pelo id, pois o id sempre será unico
     usuario = get_object_or_404(User, id = id)
 
     if request.method == 'POST':
-        #Função para deletar o produto, produto esse que selecionei pelo id
+        #Função para deletar o usuari, o usuario foi selecionado pelo id
         usuario.delete()
         return redirect('lista')  # Redireciona para o lista
 
     return render(request, 'lista_users/remover.html', {'usuario': usuario})    
 
-def modificar_usuario(request, id):
-    # Isso aqui vai ver se o usuário existe, se não existir, retorna uma página 404
+@has_role_decorator('gerente')            
+def modificar_usuario(request, id): #Views responsavel por editar informações do usuario (exceto senha)
+    #Estou puxando o objeto do banco de dados, se esse objeto por algum motivo não existir, vai retornar um erro 404. Eu estou puxando o produto pelo id, pois o id sempre será unico
     usuario = get_object_or_404(User, id=id)
 
     if request.method == 'POST':
-        # Recebe os dados do form
+        #Recebo os dados do formulario, após isso, salvo os novos dados dele
         usuario.first_name = request.POST.get('first_name')
         usuario.last_name = request.POST.get('last_name')
         usuario.username = request.POST.get('username')

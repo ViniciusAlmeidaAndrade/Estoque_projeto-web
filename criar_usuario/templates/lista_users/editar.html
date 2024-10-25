@@ -1,5 +1,5 @@
-{% load static %}
-{% load permission_tags %}
+{% load static %} <!-- Funcionalidade do django resposavel por rodar arquivos estaticos, ex: Js, css e IMG -->
+{% load permission_tags %} <!-- Funcionalidade do django resposavel por puxar os cargos criados, ex: 'Gerente' e 'Tecnico' -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,15 +10,16 @@
 </head>
 <body>
     <div>
-        <a href="{% url "estoque" %}" >Estoque</a>
-        <a href="{% url "criar_usuario" %}" >Criar Usuario</a>
-        <a href= "{% url "lista" %}">Lista de usuarios</button></a>
+        <a href="{% url "estoque" %}" >Estoque</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
+        <a href="{% url "criar_usuario" %}" >Criar Usuario</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
+        <a href="{% url "lista" %}">Lista de usuarios</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
+        <a href="{% url 'enviar_solicitação' %}">Solicitação</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
+        <a href="{% url "relatorio_vist" %}">Visita Tecnica</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->        
     </div>
-    
     <form method = "POST">
         {% csrf_token %}
         <div>
-            <h1>Editar Senha: {{ user.username }}</h1>
+            <h1>Editar Senha: {{ user.username }}</h1> <!-- Responsavel por aparecer nome do usuario que voce está mudando a senha -->
         </div>
         <div>
             <label for="senha">Insira a nova senha:</label>
@@ -28,7 +29,7 @@
             <button type="submit">Atualizar</button>
         </div>
     </form>
-
+<!-- Responsavel por aparecer o pop-up -->
     <script>
         {% if nao_add %}
         alert('Senha invalída!');

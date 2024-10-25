@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Solicitações
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def solicitar(request):
+def solicitar(request): #View responsavel pela funcionalidade de enviar email ao gerente
+    #Renderizando o html pelo metodo GET
     if request.method == 'GET':
         return render(request, 'solicitação.html')
     
@@ -13,14 +13,9 @@ def solicitar(request):
     assunto = request.POST.get('assunto')
     mensagem = request.POST.get('mensagem')
 
+    #Verificando se email, assunto e mensagem é verdadeiro
     if email and assunto and mensagem:
-        solicitar = Solicitações(
-            email=email,
-            assunto=assunto,
-            mensagem=mensagem
-        )
-        solicitar.save()
-
+        #Função do django responsavel por enviar o email
         send_mail(
             assunto, 
             (f'''{mensagem}
