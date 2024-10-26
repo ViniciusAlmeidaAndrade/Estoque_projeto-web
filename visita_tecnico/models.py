@@ -1,12 +1,11 @@
 from django.db import models
-
-class Relatorio_vist(models.Model):
-    nom_tecnicos = models.CharField(max_length=50)
-    nom_clientes =  models.CharField(max_length=50)
-    enderecos = models.CharField(max_length=150)
-    datas = models.DateField((""), auto_now=False, auto_now_add=True)
-    prod_usados =  models.CharField(max_length=255)
-    observacoes =  models.CharField(max_length=255)
-    
-    def _str_(self) -> str:
-        return self.nome
+from django.contrib.auth.models import User
+class RelatoriosVisitas(models.Model):
+    id_visita = models.AutoField(primary_key=True)
+    nom_tecnico = models.CharField(max_length=150, null=False)
+    nom_cliente = models.CharField(max_length=150, null=False)
+    endereco = models.CharField(max_length=250, null=False)
+    data = models.DateField(null=False, blank=True)
+    prod_usado = models.CharField(max_length=255, null=False)
+    observacao = models.TextField(null=False, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

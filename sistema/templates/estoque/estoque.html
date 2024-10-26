@@ -17,6 +17,7 @@
         <a href="{% url "criar_usuario" %}" >Criar Usuario</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
         <a href="{% url 'enviar_solicitação' %}">Solicitação</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
         <a href="{% url "relatorio_vist" %}">Visita Tecnica</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->        
+        <a href="{% url "historico" %}">Historico de Visitas</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->     
     </div>
     <div>
         <table border="1">
@@ -36,7 +37,7 @@
                 <tr>
                     <td>{{ produto.id_prod }}</td> <!-- ISSO VALE PARA TODAS ABAIXO = aqui eu puxei o produto, junto com o produto, eu puxei o id dele -->
                     <td>{{ produto.nome_prod }}</td>
-                    <td>{{ produto.qtnd_prod }}</td>
+                    <td>{{ produto.qntd_prod }}</td>
                     <td>{{ produto.vlr_prod }}</td>
                     <td>{{ produto.entrada_prod }}</td>
                     <td>
@@ -63,6 +64,9 @@
     <div>
         <a href="{% url "estoque" %}" >Estoque</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
         <a href="{% url "enviar_solicitação" %}" >Solicitação</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
+        <a href="{% url "relatorio_vist" %}">Visita Técnica</a>
+        <a href="{% url "historico" %}">Historico de Visitas</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->    
+
     </div>
     <table border="1">
         <caption>Produtos em estoque: {{ verprod|length }}</caption> <!-- A variavel verprod, como eu falei na views, é responsavel por sempre manter o estoque atualizadom, e a lenght ela informa a quantidade de objetos presente no banco de dados -->
@@ -80,7 +84,7 @@
             <tr>
                 <td>{{ produto.id_prod }}</td> <!-- ISSO VALE PARA TODAS ABAIXO = aqui eu puxei o produto, junto com o produto, eu puxei o id dele -->
                 <td>{{ produto.nome_prod }}</td>
-                <td>{{ produto.qtnd_prod }}</td>
+                <td>{{ produto.qntd_prod }}</td>
                 <td>{{ produto.vlr_prod }}</td>
                 <td>{{ produto.entrada_prod }}</td>
             {% endfor %}

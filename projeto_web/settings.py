@@ -82,27 +82,26 @@ WSGI_APPLICATION = 'projeto_web.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#database
 
-#DATABASES = {
-#    "default": {
-#        "ENGINE": "django.db.backends.mysql",
-#        "NAME": "projeto_web",
-#        "USER": "root",
-#        "PASSWORD": "@M4theus",
-#        "HOST": "127.0.0.1",
-#        "PORT": "3306",
-#    }
-#}
-
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "projeto_web",
+        "USER": "root",
+        "PASSWORD": "@M4theus",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+    }
+}
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / "db.sqlite3",
     }
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

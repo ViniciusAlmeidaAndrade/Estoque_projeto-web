@@ -32,8 +32,9 @@ def adicionar_produto(request): #Aqui é a view responsavel pela funcionalidade 
             produtos = Produtos(
             nome_prod=request.POST.get('nome'),
             vlr_prod=request.POST.get('valor'),
-            qtnd_prod=request.POST.get('qntd'),
-            entrada_prod=request.POST.get('data_entrada')
+            qntd_prod=request.POST.get('qntd'),
+            entrada_prod=request.POST.get('data_entrada'),
+            user = request.user
             )
             produtos.save()
 
