@@ -4,8 +4,11 @@ from django.contrib.auth.models import User
 from .models import Produtos
 from django.contrib.auth.decorators import login_required
 from rolepermissions.decorators import has_role_decorator
+from django.contrib.auth import logout
 
-# Create your views here.
+def logout_view(request):
+    logout(request)
+    return redirect('tela_login')
 
 @login_required
 def estoque(request): #Aqui é a views responsavel pela parte do estoque em si
@@ -57,7 +60,7 @@ def deletar_produto(request, id_prod): #Aqui é a view responsavel pela funciona
 def modificar_produto(request, id_prod): #Aqui é a view responsavel pela funcionalidade de remover o produto do estoque.
     #Estou puxando o objeto do banco de dados, se esse objeto por algum motivo não existir, vai retornar um erro 404. Eu estou puxando o produto pelo id, pois o id sempre será unico
     produto = get_object_or_404(Produtos, id_prod = id_prod)
-
+    
     if request.method == 'POST':
             #Em resumo, eu estou salvando a modificação do produto no banco de dados, após salvar, ele irá retornar um pop-up confirmando a alteração, e por fim, vai redirecionar para a tela de estoque.
             produto.nome_prod = request.POST.get('nome')

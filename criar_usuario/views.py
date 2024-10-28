@@ -4,8 +4,11 @@ from django.contrib.auth.models import User
 from rolepermissions.roles import assign_role
 from django.contrib.auth.decorators import login_required
 from rolepermissions.decorators import has_role_decorator
+from django.contrib.auth import logout
 
-# Create your views here.
+def logout_view(request):
+    logout(request)
+    return redirect('tela_login')
 
 @has_role_decorator('gerente')
 def criar_usuario(request): #Views responsavel por literalmente criar o usuario

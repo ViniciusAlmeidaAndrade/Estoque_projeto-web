@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return redirect('tela_login')
 
 @login_required
 def solicitar(request): #View responsavel pela funcionalidade de enviar email ao gerente

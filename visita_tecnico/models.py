@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 class RelatoriosVisitas(models.Model):
     id_visita = models.AutoField(primary_key=True)
+    usuario = models.CharField(max_length=150, null=False)
     nom_tecnico = models.CharField(max_length=150, null=False)
+    nom_tecnico_f = models.CharField(max_length=150)
     nom_cliente = models.CharField(max_length=150, null=False)
     endereco = models.CharField(max_length=250, null=False)
     data = models.DateField(null=False, blank=True)

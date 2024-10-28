@@ -10,4 +10,6 @@ urlpatterns = [
     path('criar_usuario/', include('criar_usuario.urls'), name = 'criar_usuario'), #Aqui é estou dando um redirect para as urls da parte de criar usuarios
     path('solicitação/', include('solicitacao.urls'), name = 'enviar_solicitação'), #Aqui é estou dando um redirect para as urls da parte de enviar solicitação por email
     path('visita_tecnica/', include('visita_tecnico.urls'), name = 'visita_tecnico'), #Aqui é estou dando um redirect para as urls da parte de informar visita tecnica
+
+    path('logout/', views.logout_view, name = 'logout'), #URL responsavel por fazer o logout do usuario
 ]
