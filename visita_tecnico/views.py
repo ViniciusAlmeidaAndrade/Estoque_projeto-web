@@ -16,8 +16,6 @@ def relatorio_vist(request):
         return render(request, 'relatorio_vist.html')
     else:
         nom_tecnicos = request.POST.get("nom_tecnicos")
-        user = request.user
-        verificar = User.objects.filter(username = user).first()
         
         if nom_tecnicos == request.user.username:
             relatorio = RelatoriosVisitas(
