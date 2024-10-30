@@ -27,15 +27,15 @@
             </div>
             <div>
                 <label for = "p-nome">Primeiro Nome:</label>
-                <input type = "text" name = 'first_name' id = 'p-nome' placeholder = "Primeiro Nome" required>
+                <input type = "text" name = 'first_name' id = 'p-nome' placeholder = "Insira o primeiro nome" required>
             </div>
             <div>
                 <label for = "u-nome">Ultimo Nome:</label>
-                <input type = "text" name = 'last_name' id = 'u-nome' placeholder = "Ultimo Nome" required>
+                <input type = "text" name = 'last_name' id = 'u-nome' placeholder = "Insira o ultimo nome" required>
             </div>
             <div>
                 <label for="username">Usuario:</label>
-                <input type="text" name = 'username' id = 'username' placeholder="Usuario" required>
+                <input type="text" name = 'username' id = 'username' placeholder="Insira o usuario" required>
             </div>
             <div>
                 <label for = "email">Email:</label>
@@ -44,6 +44,10 @@
             <div>
                 <label for="password">Senha:</label>
                 <input type="password" name = 'password' id = 'password' placeholder="Insira a senha" required>
+            </div>
+            <div>
+                <label for="password1">Confirme a senha:</label>
+                <input type="password" name = 'password1' id = 'password1' placeholder="Confirme a senha" required>
             </div>
             <div>
                 <button type="submit">Criar</buttonr>
@@ -57,6 +61,8 @@
         alert('Já existe um funcionario com o mesmo usuario!');
         {% elif add %}
         alert('Usuario criado!')
+        {% elif erro %}
+        alert('Senhas divergentes!')
         {% endif %}
     </script>
 </body>

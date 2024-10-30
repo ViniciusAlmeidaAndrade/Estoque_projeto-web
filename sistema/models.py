@@ -10,7 +10,7 @@ class Produtos(models.Model):
     qntd_prod = models.IntegerField(default = 0)
     entrada_prod = models.DateField()
     saida_prod = models.DateField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
 
     def __str__(self):
         return self.nome_prod

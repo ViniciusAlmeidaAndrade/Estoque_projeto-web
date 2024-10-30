@@ -44,7 +44,10 @@
             <button type="submit">Atualizar {{ usuario.username }}</button>
         </div>
     </form>
-    <a href="{% url 'estoque' %}"><button id="del">Desistir</button></a>
+
+    <div>
+        <a href="{% url 'lista' %}"><button id="del">Desistir</button></a>
+    </div>
 
     <script src="{% static 'sistema/criar_usuario/js/criar_usuario.js' %}"></script>
     <!-- Responsavel por aparecer o pop-up -->
@@ -53,6 +56,8 @@
         alert('Já existe um produto com o mesmo nome!!');
         {% elif add %}
         alert('Usuario alterado com sucesso!')
+        {% elif duplicado %}
+        alert('Já existe um funcionario com o mesmo usuario!');
         {% endif %}
     </script>
 </body>

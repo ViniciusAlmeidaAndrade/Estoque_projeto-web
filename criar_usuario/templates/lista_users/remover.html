@@ -23,7 +23,7 @@
         <h1>Deletar Usuario: {{ usuario.username }}</h1>
     </div>
     <div>
-        <p>Tem certeza de que deseja apagar esse usuario?</p>
+        <p>Tem certeza que deseja apagar este usuario?</p>
     </div>
     <div>
         <form method = "POST">
@@ -32,10 +32,8 @@
         </form>        
     </div>
     <div>
-        <a href="{% url 'estoque' %}"><button id="del">Desistir</button></a>
+        <a href="{% url 'lista' %}"><button id="del">Desistir</button></a>
     </div>
-
-
 
     <script src="{% static 'sistema/criar_usuario/js/criar_usuario.js' %}"></script>
 </body>

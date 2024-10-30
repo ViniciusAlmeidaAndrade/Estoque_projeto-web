@@ -25,18 +25,27 @@
         </div>
         <div>
             <label for="senha">Insira a nova senha:</label>
-            <input type="password" name="senha" id="senha" required>
+            <input type="password" name="senha" id="senha" placeholder = 'Insira a senha' required>
+        </div>
+        <div>
+            <label for="senha">Confirme a senha:</label>
+            <input type="password" name="senha1" id="senha1" placeholder = 'Confirme a senha' required>
         </div>
         <div>
             <button type="submit">Atualizar</button>
         </div>
     </form>
+    <div>
+        <a href="{% url 'lista' %}"><button id="del">Desistir</button></a>
+    </div>
 <!-- Responsavel por aparecer o pop-up -->
     <script>
         {% if nao_add %}
         alert('Senha invalída!');
-        {% elif add%}
+        {% elif add %}
         alert('Senha alterada com sucesso!')
+        {% elif erro%}
+        alert('Senhas divergentes!')
         {% endif %}
     </script>
     <script src="{% static 'sistema/criar_usuario/js/criar_usuario.js' %}"></script>

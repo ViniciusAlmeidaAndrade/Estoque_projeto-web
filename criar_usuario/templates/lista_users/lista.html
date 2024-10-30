@@ -56,6 +56,10 @@
         <script>
             {% if add  %}
             alert('O produto foi atualizado!');
+            {% elif duplicado  %}
+            alert('O usuario foi alterado com sucesso!');
+            {% elif add_senha  %}
+            alert('A senha foi alterada com sucesso!');
             {% endif %}
         </script>
         <script src="{% static 'sistema/criar_usuario/js/criar_usuario.js' %}"></script>      

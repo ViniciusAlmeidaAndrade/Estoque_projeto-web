@@ -30,7 +30,8 @@ def relatorio_vist(request):
                 user = request.user
             )
             relatorio.save()
-            return render(request, 'relatorio_vist.html', {'add': True})
+            verrelat = RelatoriosVisitas.objects.all()
+            return render(request, 'historico.html', {'add': True, 'verrelat': verrelat})
         else:
             return render(request, 'relatorio_vist.html', {'erro': True})
    

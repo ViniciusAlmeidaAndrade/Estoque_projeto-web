@@ -23,19 +23,19 @@
         <form method = 'POST'> 
             {% csrf_token %}
             <div>
-                <h1>Adicione o produto!</h1>
+                <h1>Adicione o produto</h1>
             </div>
             <div>
                 <label for="nome">Nome do produto: </label>
-                <input type="text" name="nome" id="nome" placeholder = 'Ensira aqui!'required>
+                <input type="text" name="nome" id="nome" placeholder = 'Insira o nome do produto.'required>
             </div>
             <div>
                 <label for="valor">Valor do produto: </label>
-                <input type="number" name="valor" id="valor" min="0" max="9999.99" step="0.01" placeholder="Insira aqui!" required>
+                <input type="number" name="valor" id="valor" min="0" max="9999.99" step="0.01" placeholder="Insira o valor do produto. Max: 9999.99" required>
             </div>            
             <div>
                 <label for="qntd">Quantidade: </label>
-                <input type="number" name="qntd" id="qntd" placeholder = 'Ensira aqui!' size = "18" required>
+                <input type="number" name="qntd" id="qntd" placeholder = 'Insira a quantidade de produtos' size = "18" required>
             </div>
             <div>
                 <label for="data_entrada">Data de entrada: </label>
