@@ -11,5 +11,9 @@ urlpatterns = [
     path('solicitação/', include('solicitacao.urls'), name = 'enviar_solicitação'), #Aqui é estou dando um redirect para as urls da parte de enviar solicitação por email
     path('visita_tecnica/', include('visita_tecnico.urls'), name = 'visita_tecnico'), #Aqui é estou dando um redirect para as urls da parte de informar visita tecnica
 
+    path('exportar_csv/', views.exportar_csv, name = 'exportar_csv'),
+
+     path('exportar_csv_geral/', views.exportar_csv_geral, name = 'exportar_csv_geral'),
+
     path('logout/', views.logout_view, name = 'logout'), #URL responsavel por fazer o logout do usuario
 ]

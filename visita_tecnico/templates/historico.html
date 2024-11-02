@@ -55,14 +55,20 @@
                 </tr>
                 {% endfor %}
             </tbody>
-         <!-- Responsavel pelo pop-up -->
-        <script>
-            {% if add  %}
-            alert('A visita foi salva!'); 
-            {% endif %}
-        </script>
-        <script src="{% static 'sistema/estoque/js/estoque.js' %}"></script>        
+        </table>    
     </div>
+    <div>
+        <a href="{% url 'exportar_csvh' %}"><button id = 'csv'>Exportar Visitas</button></a>
+        <a href="{% url 'exportar_csv_geral' %}"><button id = 'csvg'>Exportar Visitias + Estoque</button></a>
+    </div>
+    <!-- Responsavel pelo pop-up -->
+    <script>
+        {% if add  %}
+        alert('A visita foi salva!'); 
+        {% endif %}
+    </script>
+
+    <script src="{% static 'sistema/estoque/js/estoque.js' %}"></script>    
 </body>
 {% else %}
 <body>

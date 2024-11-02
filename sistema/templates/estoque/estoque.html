@@ -22,8 +22,12 @@
         <a href="{% url "logout" %}">Logout</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->     
     </div>
     <div>
+        
+    </div>
+    <div>
         <table border="1">
             <caption>Produtos em estoque: {{ verprod|length }}</caption> <!-- A variavel verprod, como eu falei na views, é responsavel por sempre manter o estoque atualizadom, e a lenght ela informa a quantidade de objetos presente no banco de dados -->
+            <caption></caption>
             <thead>
                 <tr>
                     <th>Id</th>
@@ -50,8 +54,14 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'add_estoque' %}"><button id="up">Adicionar produto</button></a>  <!-- Responsavel pelo botão 'Adicionar produto' -->
-    
+        <div>
+            <div>
+                <a href="{% url 'add_estoque' %}"><button id = "add">Adicionar produto</button></a>
+                <a href="{% url 'exportar_csv' %}"><button id = 'csv'>Exportar Estoque</button></a>
+                <a href="{% url 'exportar_csv_geral' %}"><button id = 'csvg'>Exportar Estoque + Visitas</button></a>
+            </div>
+        </div>   
+ 
          <!-- Responsavel pelo pop-up -->
         <script>
             {% if add  %}
@@ -70,6 +80,7 @@
         <a href="{% url "enviar_solicitação" %}" >Solicitação</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->
         <a href="{% url "logout" %}">Logout</a> <!-- Responsavel pela navegação entre as páginas dentro do sistema -->     
     </div>
+    <a href="{% url 'export_combined_csv' %}" class="btn btn-danger">Exportar PDF</a> <!-- Botão para exportar PDF -->
     <table border="1">
         <caption>Produtos em estoque: {{ verprod|length }}</caption> <!-- A variavel verprod, como eu falei na views, é responsavel por sempre manter o estoque atualizadom, e a lenght ela informa a quantidade de objetos presente no banco de dados -->
         <thead>
